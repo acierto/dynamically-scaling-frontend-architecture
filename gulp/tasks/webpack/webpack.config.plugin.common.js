@@ -18,7 +18,7 @@ export const buildConfig = (pluginName) => ({
     },
     node: common.node,
     output: {
-        filename: '[name].js',
+        filename: 'index.js',
         path: `${paths.pluginsDistDir}/${pluginName}`,
         publicPath: '/'
     },

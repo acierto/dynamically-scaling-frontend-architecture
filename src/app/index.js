@@ -1,5 +1,6 @@
 import './styles/reset.less';
 
+import R from 'ramda';
 import React from 'react';
 import {render} from 'react-dom';
 import {AppContainer} from 'react-hot-loader';
@@ -20,7 +21,7 @@ const renderApp = (ComponentsApp) => {
     render(
         <AppContainer>
             <Provider store={store}>
-                <ConnectedRouter history={history}>
+                <ConnectedRouter history={history} onLocationChanged={R.F} store={store}>
                     <div>
                         <Route exact={true} path='/' render={redirectHome}/>
                         <ComponentsApp>

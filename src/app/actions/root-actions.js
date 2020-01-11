@@ -4,3 +4,4 @@ export default {
     WIPE_STORE,
     wipeStore: () => ({type: WIPE_STORE})
 };
+
