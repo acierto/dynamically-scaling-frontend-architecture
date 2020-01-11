@@ -9,8 +9,9 @@ gulp.task('server:start', (cb) => {
         res.sendFile(`${paths.distDir}/index.html`);
     });
     app.use(express.static(`${paths.projectDir}/dist`));
+    app.use('/plugins', express.static(`${paths.projectDir}/plugins`));
     app.listen(3000, function () {
-        console.log('Example app listening on port 3000!');
+        console.log('DPA is started on port 3000!');
         cb();
     });
 });

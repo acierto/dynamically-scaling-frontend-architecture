@@ -8,10 +8,10 @@ import common from './webpack.config.common';
 export default {
     devtool: 'inline-source-map',
     entry: {
-        polyfills: './app/polyfills.js',
+        polyfills: './src/app/polyfills.js',
         main: [
             'eventsource-polyfill',
-            './app/index'
+            './src/app/index'
         ],
         vendor: R.keys(dependencies)
     },
@@ -55,7 +55,7 @@ export default {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         new HtmlWebpackPlugin({
-            template: './app/index.ejs',
+            template: './src/app/index.ejs',
             title: 'Dynamically pluggable architecture'
         })
     ]

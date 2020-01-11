@@ -8,7 +8,7 @@ import {Redirect, Route, Switch} from 'react-router';
 import {ConnectedRouter} from 'connected-react-router';
 import {InfoPage} from './pages/info-page/info-page';
 import {HomePage} from './pages/home-page/home-page';
-import {App} from './pages/App';
+import {App} from './pages/app';
 import {store} from './store/plumbing';
 import history from './history';
 

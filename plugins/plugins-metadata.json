@@ -1,0 +1,12 @@
+{
+  "plugins": [
+    {
+      "name": "about",
+      "entry": "/plugins/about/index.js"
+    },
+    {
+      "name": "profile",
+      "entry": "/plugins/profile/index.js"
+    }
+  ]
+}

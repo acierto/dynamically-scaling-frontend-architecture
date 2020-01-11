@@ -37,3 +37,4 @@ jrebel.lic
 .idea
 
 dist/*
+node_modules/*
