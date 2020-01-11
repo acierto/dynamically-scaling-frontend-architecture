@@ -1,3 +1,5 @@
 import gulp from 'gulp';
 
-gulp.task('default', gulp.series('clean', 'webpack-development', 'server:start'));
+gulp.task('build-all', gulp.parallel('webpack-app', 'webpack-about', 'webpack-profile'));
+
+gulp.task('default', gulp.series('clean', 'build-all', 'server:start'));

@@ -1,11 +1,18 @@
 import path from 'path';
 
 const projectDir = path.resolve(__dirname, '..', '..');
+
+const srcDir = path.resolve(projectDir, 'src');
+const appSrcDir = path.resolve(srcDir, 'app');
+const pluginsSrcDir = path.resolve(srcDir, 'src/plugins');
+
 const distDir = path.resolve(projectDir, 'dist');
-const srcDir = path.resolve(projectDir, 'src/app');
+const pluginsDistDir = path.resolve(projectDir, 'plugins');
 
 export default {
+    appSrcDir,
     distDir,
-    projectDir,
-    srcDir
+    pluginsDistDir,
+    pluginsSrcDir,
+    projectDir
 };
