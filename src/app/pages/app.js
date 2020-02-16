@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import {Route, Switch} from 'react-router';
 import ReduxToastr from 'react-redux-toastr';
 import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {LinkContainer} from 'react-router-bootstrap';
 import {Button} from 'react-bootstrap';
+import PropTypes from 'prop-types';
 import CustomLinks from '../components/custom-links';
 import CustomRoutes from '../components/custom-routes';
 import '../imports/globals';
@@ -15,14 +15,20 @@ import {HomePage} from './home-page/home-page';
 
 import './app.less';
 
-const mapStateToProps = (state) => ({plugins: state.customPlugins});
+const mapStateToProps = (state) => ({
+    bootstrappedPlugins: state.bootstrap.bootstrappedPlugins,
+    plugins: state.customPlugins
+});
 
 @connect(mapStateToProps)
 export class App extends Component {
-    static propTypes = {plugins: pluginsType};
+    static propTypes = {
+        bootstrappedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired,
+        plugins: pluginsType
+    };
 
     render() {
-        const {plugins} = this.props;
+        const {bootstrappedPlugins, plugins} = this.props;
         return <div className="dpaApp">
             <div className="nav">
                 <LinkContainer to="/home">
@@ -37,7 +43,7 @@ export class App extends Component {
                 <Switch>
                     <Route component={InfoPage} exact={true} path="/info"/>
                     <Route component={HomePage} path="/home"/>
-                    <CustomRoutes plugins={plugins}/>
+                    <CustomRoutes bootstrappedPlugins={bootstrappedPlugins} plugins={plugins}/>
                 </Switch>
             </main>
             <ReduxToastr

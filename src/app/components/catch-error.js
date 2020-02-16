@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
-export default class ErrorBoundary extends PureComponent {
+export default class CatchError extends PureComponent {
     static propTypes = {children: PropTypes.element};
 
     constructor(props) {

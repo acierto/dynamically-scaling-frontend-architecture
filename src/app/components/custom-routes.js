@@ -1,23 +1,27 @@
 import R from 'ramda';
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import {Route} from 'react-router';
-import ErrorBoundary from '../components/error-boundary-component';
+import CatchError from '../components/catch-error';
 import LoadPlugin from '../components/load-plugin';
 import {pluginsType} from '../types/plugins-type';
 
 export default class CustomRoutes extends PureComponent {
-    static propTypes = {plugins: pluginsType};
-
-    createRoute = (plugin) => {
-        const component = () => <ErrorBoundary>
-            <LoadPlugin
-                bootstrappedPlugins={[]}
-                pluginName={plugin.name}
-                scriptUrl={plugin.entry}
-            />
-        </ErrorBoundary>;
-        return <Route component={component} key={`${plugin.name}-route`} path={`/${plugin.name}`}/>;
+    static propTypes = {
+        bootstrappedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired,
+        plugins: pluginsType
     };
+
+    component = (plugin) => () => <CatchError>
+        <LoadPlugin
+            bootstrappedPlugins={this.props.bootstrappedPlugins}
+            pluginName={plugin.name}
+            scriptUrl={plugin.entry}
+        />
+    </CatchError>;
+
+    createRoute = (plugin) =>
+        <Route component={this.component(plugin)} key={`${plugin.name}-route`} path={`/${plugin.name}`}/>;
 
     render() {
         const {plugins} = this.props;
