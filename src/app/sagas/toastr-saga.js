@@ -1,6 +1,6 @@
 import {all, put, takeEvery} from 'redux-saga/effects';
 import {actions as toastr} from 'react-redux-toastr';
-import toastrActions from '../actions/toastr-actions';
+import toastrActions, {TOASTR_TYPE} from '../actions/toastr-actions';
 
 const addToastr = (title, message, options, toastrType) =>
     toastr.add({
@@ -10,7 +10,7 @@ const addToastr = (title, message, options, toastrType) =>
         type: toastrType
     });
 
-export function* showToastr({title, message, toastrType}) {
+export function* showToastr({title, message, toastrType = TOASTR_TYPE.success}) {
     yield put(addToastr(title, message, {timeOut: 5000}, toastrType));
 }
 
