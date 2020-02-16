@@ -21,7 +21,11 @@ export default class CustomRoutes extends PureComponent {
     </CatchError>;
 
     createRoute = (plugin) =>
-        <Route component={this.component(plugin)} key={`${plugin.name}-route`} path={`/${plugin.name}`}/>;
+        <Route
+            component={this.component(plugin)}
+            key={`${plugin.name}-route`}
+            path={`/${plugin.name}`}
+        />;
 
     render() {
         const {plugins} = this.props;

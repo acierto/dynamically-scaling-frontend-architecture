@@ -12,13 +12,17 @@ const LoadPlugin = (params) => {
     const [loadedPluginName, setLoadedPluginName] = useState();
 
     useEffect(() => {
-        const script = document.createElement('script');
-        script.src = scriptUrl;
-        script.async = true;
-        script.onload = () => {
+        if (R.not(R.includes(pluginName, bootstrappedPlugins))) {
+            const script = document.createElement('script');
+            script.src = scriptUrl;
+            script.async = true;
+            script.onload = () => {
+                setLoadedPluginName(pluginName);
+            };
+            document.body.appendChild(script);
+        } else {
             setLoadedPluginName(pluginName);
-        };
-        document.body.appendChild(script);
+        }
 
         return () => {
             if (context.saga) {
