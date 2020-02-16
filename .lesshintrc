@@ -1,0 +1,14 @@
+{
+    "fileExtensions": [".less", ".css"],
+    "excludedFiles": ["reset.less"],
+    "hexLength": "short",
+    "maxCharPerLine": 120,
+    "onlyVariableColors": true,
+    "qualifyingElement": {
+        "allowWithAttribute": true,
+        "allowWithClass": true,
+        "allowWithId": true
+    },
+    "universalSelector": false,
+    "zeroUnit": "no_unit"
+}

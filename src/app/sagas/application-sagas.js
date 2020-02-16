@@ -1,10 +1,10 @@
 import {
     all, call, put, select, take, takeEvery
 } from 'redux-saga/effects';
-import {selectBootstrapped} from './selectors';
 
 import applicationActions from '../actions/application-actions';
 import customPluginsActions from '../actions/custom-plugins-actions';
+import {selectBootstrapped} from './selectors';
 
 export function* bootstrap() {
     const bootstrapped = yield select(selectBootstrapped);

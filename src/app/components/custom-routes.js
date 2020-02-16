@@ -1,7 +1,7 @@
 import R from 'ramda';
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {Route} from "react-router";
+import {Route} from 'react-router';
 import ErrorBoundary from '../components/error-boundary-component';
 import LoadPlugin from '../components/load-plugin';
 

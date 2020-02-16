@@ -15,7 +15,7 @@ export default class ErrorBoundary extends PureComponent {
 
     render() {
         if (this.state.hasError) {
-            return <h1>Plugin wasn't loaded successfully due to found errors</h1>;
+            return <h1>Plugin has not been loaded successfully due to found errors</h1>;
         }
         return this.props.children;
     }

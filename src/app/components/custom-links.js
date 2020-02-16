@@ -15,7 +15,8 @@ export default class CustomLinks extends PureComponent {
     render() {
         const {plugins} = this.props;
         return <div>
-            {R.map((plugin) =>
+            {R.map(
+                (plugin) =>
                     <LinkContainer key={plugin.name} to={`/${plugin.name}`}>
                         <Button>
                             {plugin.name}

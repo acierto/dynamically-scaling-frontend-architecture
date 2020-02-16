@@ -1,5 +1,3 @@
 import {AboutPage} from './about-page';
 
-export default {
-    component: AboutPage
-}
+export default {component: AboutPage};

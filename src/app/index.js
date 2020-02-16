@@ -13,9 +13,8 @@ import {store} from './store/plumbing';
 import history from './history';
 
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
-import './styles/dynamically-pluggable-architecture.less';
 
-const redirectHome = () => <Redirect to='/home'/>;
+const redirectHome = () => <Redirect to="/home"/>;
 
 store.dispatch(applicationActions.bootstrap());
 
@@ -23,9 +22,12 @@ const renderApp = (ApplicationLayout) => {
     render(
         <AppContainer>
             <Provider store={store}>
-                <ConnectedRouter history={history} onLocationChanged={R.F} store={store}>
+                <ConnectedRouter
+                    history={history}
+                    onLocationChanged={R.F}
+                    store={store}>
                     <div>
-                        <Route exact={true} path='/' render={redirectHome}/>
+                        <Route exact={true} path="/" render={redirectHome}/>
                         <ApplicationLayout/>
                     </div>
                 </ConnectedRouter>
@@ -36,9 +38,3 @@ const renderApp = (ApplicationLayout) => {
 };
 
 renderApp(App);
-
-if (module.hot) {
-    module.hot.accept(() => {
-        renderApp(App);
-    });
-}

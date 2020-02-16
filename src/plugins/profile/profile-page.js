@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './profile-page.less';
-import {Button} from "react-bootstrap";
+import {Button} from 'react-bootstrap';
 
 export const ProfilePage = () => {
     const {dispatch} = window.dpaStore;
@@ -9,6 +9,7 @@ export const ProfilePage = () => {
     const handleOnClick = () => dispatch({
         message: 'That\'s profile page',
         title: 'Profile Page',
+        toastrType: 'info',
         type: 'toastr/SHOW'
     });
 
