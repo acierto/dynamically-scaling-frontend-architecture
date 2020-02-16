@@ -5,15 +5,14 @@ import React from 'react';
 import {render} from 'react-dom';
 import {AppContainer} from 'react-hot-loader';
 import {Provider} from 'react-redux';
-import {Redirect, Route, Switch} from 'react-router';
+import {Redirect, Route} from 'react-router';
 import {ConnectedRouter} from 'connected-react-router';
 import applicationActions from './actions/application-actions';
-import {InfoPage} from './pages/info-page/info-page';
-import {HomePage} from './pages/home-page/home-page';
 import {App} from './pages/app';
 import {store} from './store/plumbing';
 import history from './history';
 
+import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 import './styles/dynamically-pluggable-architecture.less';
 
 const redirectHome = () => <Redirect to='/home'/>;

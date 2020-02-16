@@ -12,6 +12,7 @@ import {Route, Switch} from 'react-router';
 import {InfoPage} from './info-page/info-page';
 import {HomePage} from './home-page/home-page';
 import {connect} from 'react-redux';
+import ReduxToastr from 'react-redux-toastr';
 
 const mapStateToProps = (state) => ({plugins: state.customPlugins});
 
@@ -43,6 +44,15 @@ export class App extends Component {
                     <CustomRoutes plugins={plugins}/>
                 </Switch>
             </main>
+            <ReduxToastr
+                newestOnTop={true}
+                position="top-right"
+                preventDuplicates={true}
+                progressBar={true}
+                timeOut={10000}
+                transitionIn="bounceInDown"
+                transitionOut="fadeOut"
+            />
         </div>;
     }
 }

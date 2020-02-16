@@ -1,11 +1,16 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
+import {useDispatch} from 'react-redux';
+import toastrActions from '../../actions/toastr-actions';
 
 import './info-page.less';
+import {Button} from "react-bootstrap";
 
-export class InfoPage extends PureComponent {
-    render() {
-        return <div className="info-page">
-            Info
-        </div>;
-    }
-}
+export const InfoPage = () => {
+    const dispatch = useDispatch();
+
+    const handleOnClick = () => dispatch(toastrActions.show('title', 'message'));
+
+    return <div className="info-page">
+        <Button onClick={handleOnClick}>Get info</Button>
+    </div>;
+};

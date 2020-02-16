@@ -6,7 +6,6 @@ export function* loadCustomPluginsSaga() {
     try {
         const {data: {plugins = []}} = yield call(getPluginsMetadata);
         yield putResolve(customPluginsActions.set(plugins));
-        //TODO: append new custom plugins to navigation bar
     } catch (exception) {
         console.log(exception);
     }
