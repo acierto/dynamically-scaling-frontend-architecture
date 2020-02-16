@@ -4,8 +4,8 @@ import {getPluginsMetadata} from '../resources/api-resource';
 
 export function* loadCustomPluginsSaga() {
     try {
-        const {data} = yield call(getPluginsMetadata);
-        yield putResolve(customPluginsActions.set(data));
+        const {data: {plugins = []}} = yield call(getPluginsMetadata);
+        yield putResolve(customPluginsActions.set(plugins));
         //TODO: append new custom plugins to navigation bar
     } catch (exception) {
         console.log(exception);

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {LinkContainer} from 'react-router-bootstrap';
 import {Button} from 'react-bootstrap';
+import CustomPluginsExtension from '../components/custom-plugins-extension';
 
 import './app.less';
 
@@ -18,6 +19,7 @@ export class App extends Component {
                 <LinkContainer to="/info">
                     <Button>Info</Button>
                 </LinkContainer>
+                <CustomPluginsExtension/>
             </div>
             <main>
                 {this.props.children}
