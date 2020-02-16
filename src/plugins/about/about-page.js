@@ -1,11 +1,20 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 
 import './about-page.less';
+import {Button} from "react-bootstrap";
 
-export class AboutPage extends PureComponent {
-    render() {
-        return <div className="about-page">
-            About
-        </div>;
-    }
-}
+export const AboutPage = () => {
+    const {dispatch} = window.dpaStore;
+
+    const handleOnClick = () => dispatch({
+        message: 'That\'s about page',
+        title: 'About Page',
+        type: 'toastr/SHOW'
+    });
+
+    return (
+        <div className="about-page">
+            <Button onClick={handleOnClick}>Get info</Button>
+        </div>
+    );
+};

@@ -8,7 +8,8 @@ import {Button} from "react-bootstrap";
 export const InfoPage = () => {
     const dispatch = useDispatch();
 
-    const handleOnClick = () => dispatch(toastrActions.show('title', 'message'));
+    const handleOnClick = () => dispatch(toastrActions.show('Info Page',
+        'That page consists the information about this site.'));
 
     return <div className="info-page">
         <Button onClick={handleOnClick}>Get info</Button>
