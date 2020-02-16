@@ -19,6 +19,9 @@ export const buildConfig = (pluginName) => ({
     node: common.node,
     output: {
         filename: 'index.js',
+        globalObject: 'window',
+        library: pluginName,
+        libraryTarget: 'umd',
         path: `${paths.pluginsDistDir}/${pluginName}`,
         publicPath: '/'
     },

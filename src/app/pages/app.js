@@ -3,26 +3,45 @@ import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {LinkContainer} from 'react-router-bootstrap';
 import {Button} from 'react-bootstrap';
-import CustomPluginsExtension from '../components/custom-plugins-extension';
+import CustomLinks from '../components/custom-links';
+import CustomRoutes from '../components/custom-routes';
+import '../imports/globals';
 
 import './app.less';
+import {Route, Switch} from 'react-router';
+import {InfoPage} from './info-page/info-page';
+import {HomePage} from './home-page/home-page';
+import {connect} from 'react-redux';
 
+const mapStateToProps = (state) => ({plugins: state.customPlugins});
+
+@connect(mapStateToProps)
 export class App extends Component {
-    static propTypes = {children: PropTypes.element};
+    static propTypes = {
+        plugins: PropTypes.arrayOf(PropTypes.shape({
+            entry: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired
+        }))
+    };
 
     render() {
-        return <div className="dpaApp">
-            <div className="nav">
-                <LinkContainer to="/home">
+        const {plugins} = this.props;
+        return <div className='dpaApp'>
+            <div className='nav'>
+                <LinkContainer to='/home'>
                     <Button>Home</Button>
                 </LinkContainer>
-                <LinkContainer to="/info">
+                <LinkContainer to='/info'>
                     <Button>Info</Button>
                 </LinkContainer>
-                <CustomPluginsExtension/>
+                <CustomLinks plugins={plugins}/>
             </div>
             <main>
-                {this.props.children}
+                <Switch>
+                    <Route component={InfoPage} exact={true} path='/info'/>
+                    <Route component={HomePage} path='/home'/>
+                    <CustomRoutes plugins={plugins}/>
+                </Switch>
             </main>
         </div>;
     }

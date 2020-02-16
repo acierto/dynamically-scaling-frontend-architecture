@@ -1,4 +1,4 @@
-import applicationActions from '../actions/application-actions';
+import systemActions from '../actions/application-actions';
 import {actionReducer, composeReducer, stateIdentity} from './reducer-utils';
 
 const bootstrapped = actionReducer((state) => ({
@@ -6,13 +6,13 @@ const bootstrapped = actionReducer((state) => ({
     bootstrapped: true
 }));
 
-const pluginBootstrapped = actionReducer((state) => ({
+const pluginBootstrapped = actionReducer((state, action) => ({
     ...state,
-    pluginsBootstrapped: true
+    bootstrappedPlugins: [...state.bootstrappedPlugins, action.plugin]
 }));
 
 export const bootstrapReducer = composeReducer(
-    bootstrapped(applicationActions.BOOTSTRAPPED),
-    pluginBootstrapped(applicationActions.PLUGIN_BOOTSTRAPPED),
+    bootstrapped(systemActions.BOOTSTRAPPED),
+    pluginBootstrapped(systemActions.PLUGIN_BOOTSTRAPPED),
     stateIdentity
-)({bootstrapped: false, pluginsBootstrapped: false});
+)({bootstrapped: false, bootstrappedPlugins: []});

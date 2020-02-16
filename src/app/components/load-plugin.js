@@ -2,20 +2,20 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
 import PropTypes from 'prop-types';
 import R from 'ramda';
-import customPluginActions from '../actions/custom-plugins-actions';
+import applicationActions from '../actions/application-actions';
 
-const LoadPlugin = ({bootstrappedPlugins, componentNamespace, scriptUrl}) => {
+const LoadPlugin = ({bootstrappedPlugins, pluginName, scriptUrl}) => {
     const dispatch = useDispatch();
     const context = {};
 
-    const [namespace, setNamespace] = useState();
+    const [loadedPluginName, setLoadedPluginName] = useState();
 
     useEffect(() => {
         const script = document.createElement('script');
         script.src = scriptUrl;
         script.async = true;
         script.onload = () => {
-            setNamespace(componentNamespace);
+            setLoadedPluginName(pluginName);
         };
         document.body.appendChild(script);
 
@@ -26,19 +26,14 @@ const LoadPlugin = ({bootstrappedPlugins, componentNamespace, scriptUrl}) => {
         };
     }, []);
 
-    if (R.complement(R.isNil)(namespace)) {
+    if (R.complement(R.isNil)(loadedPluginName)) {
         const {
-            component: Component,
-            reducers,
-            saga
-        } = window[namespace].default;
+            component: Component
+        } = window[loadedPluginName].default;
 
-        if (R.not(R.includes(namespace, bootstrappedPlugins))) {
-            context.saga = window.xldSaga.run(saga);
-            window.dpaReducerRegistry.register(reducers);
-            dispatch(customPluginActions.pluginBootstrapped(namespace));
+        if (R.not(R.includes(loadedPluginName, bootstrappedPlugins))) {
+            dispatch(applicationActions.pluginBootstrapped(loadedPluginName));
         }
-        dispatch(customPluginActions.bootstrapPlugins());
         return <Component/>;
     }
 
@@ -47,7 +42,7 @@ const LoadPlugin = ({bootstrappedPlugins, componentNamespace, scriptUrl}) => {
 
 LoadPlugin.propTypes = {
     bootstrappedPlugins: PropTypes.array.isRequired,
-    componentNamespace: PropTypes.string.isRequired,
+    pluginName: PropTypes.string.isRequired,
     scriptUrl: PropTypes.string.isRequired
 };
 

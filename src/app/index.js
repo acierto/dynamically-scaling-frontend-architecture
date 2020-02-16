@@ -27,12 +27,7 @@ const renderApp = (ApplicationLayout) => {
                 <ConnectedRouter history={history} onLocationChanged={R.F} store={store}>
                     <div>
                         <Route exact={true} path='/' render={redirectHome}/>
-                        <ApplicationLayout>
-                            <Switch>
-                                <Route component={InfoPage} exact={true} path='/info'/>
-                                <Route component={HomePage} path='/home'/>
-                            </Switch>
-                        </ApplicationLayout>
+                        <ApplicationLayout/>
                     </div>
                 </ConnectedRouter>
             </Provider>

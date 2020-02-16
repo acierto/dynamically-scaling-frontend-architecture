@@ -8,11 +8,11 @@ import common from './webpack.config.common';
 export default {
     devtool: 'inline-source-map',
     entry: {
-        polyfills: './src/app/polyfills.js',
         main: [
             'eventsource-polyfill',
             './src/app/index'
         ],
+        polyfills: './src/app/imports/polyfills.js',
         vendor: R.keys(dependencies)
     },
     mode: common.mode,
