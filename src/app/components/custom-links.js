@@ -1,16 +1,11 @@
 import React, {PureComponent} from 'react';
 import R from 'ramda';
-import PropTypes from 'prop-types';
 import {Button} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
+import {pluginsType} from '../types/plugins-type';
 
 export default class CustomLinks extends PureComponent {
-    static propTypes = {
-        plugins: PropTypes.arrayOf(PropTypes.shape({
-            entry: PropTypes.string.isRequired,
-            name: PropTypes.string.isRequired
-        }))
-    };
+    static propTypes = {plugins: pluginsType};
 
     render() {
         const {plugins} = this.props;
@@ -18,8 +13,8 @@ export default class CustomLinks extends PureComponent {
             {R.map(
                 (plugin) =>
                     <LinkContainer key={plugin.name} to={`/${plugin.name}`}>
-                        <Button>
-                            {plugin.name}
+                        <Button variant={R.pathOr('primary', ['options', 'tab', 'variant'], plugin)}>
+                            {plugin.options.tab.title}
                         </Button>
                     </LinkContainer>
                 , plugins)}

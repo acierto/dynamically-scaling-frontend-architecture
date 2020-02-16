@@ -9,6 +9,7 @@ import {Button} from 'react-bootstrap';
 import CustomLinks from '../components/custom-links';
 import CustomRoutes from '../components/custom-routes';
 import '../imports/globals';
+import {pluginsType} from '../types/plugins-type';
 import {InfoPage} from './info-page/info-page';
 import {HomePage} from './home-page/home-page';
 
@@ -18,12 +19,7 @@ const mapStateToProps = (state) => ({plugins: state.customPlugins});
 
 @connect(mapStateToProps)
 export class App extends Component {
-    static propTypes = {
-        plugins: PropTypes.arrayOf(PropTypes.shape({
-            entry: PropTypes.string.isRequired,
-            name: PropTypes.string.isRequired
-        }))
-    };
+    static propTypes = {plugins: pluginsType};
 
     render() {
         const {plugins} = this.props;
@@ -33,7 +29,7 @@ export class App extends Component {
                     <Button>Home</Button>
                 </LinkContainer>
                 <LinkContainer to="/info">
-                    <Button>Info</Button>
+                    <Button variant="info">Info</Button>
                 </LinkContainer>
                 <CustomLinks plugins={plugins}/>
             </div>

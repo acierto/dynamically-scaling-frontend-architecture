@@ -15,7 +15,7 @@ export const ProfilePage = () => {
 
     return (
         <div className="profile-page">
-            <Button onClick={handleOnClick}>Get info</Button>
+            <Button onClick={handleOnClick}>Show message</Button>
         </div>
     );
 };

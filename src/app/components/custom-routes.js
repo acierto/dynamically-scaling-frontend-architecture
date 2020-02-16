@@ -1,17 +1,12 @@
 import R from 'ramda';
 import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
 import {Route} from 'react-router';
 import ErrorBoundary from '../components/error-boundary-component';
 import LoadPlugin from '../components/load-plugin';
+import {pluginsType} from '../types/plugins-type';
 
 export default class CustomRoutes extends PureComponent {
-    static propTypes = {
-        plugins: PropTypes.arrayOf(PropTypes.shape({
-            entry: PropTypes.string.isRequired,
-            name: PropTypes.string.isRequired
-        }))
-    };
+    static propTypes = {plugins: pluginsType};
 
     createRoute = (plugin) => {
         const component = () => <ErrorBoundary>

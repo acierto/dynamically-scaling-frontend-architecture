@@ -2,11 +2,23 @@
   "plugins": [
     {
       "name": "about",
-      "entry": "/plugins/about/index.js"
+      "entry": "/plugins/about/index.js",
+      "options": {
+        "tab": {
+          "title": "About",
+          "variant": "success"
+        }
+      }
     },
     {
       "name": "profile",
-      "entry": "/plugins/profile/index.js"
+      "entry": "/plugins/profile/index.js",
+      "options": {
+        "tab": {
+          "title": "Profile",
+          "variant": "dark"
+        }
+      }
     }
   ]
 }
