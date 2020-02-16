@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {LinkContainer} from 'react-router-bootstrap';
+import {Button} from 'react-bootstrap';
+
+import './app.less';
 
 export class App extends Component {
     static propTypes = {children: PropTypes.element};
@@ -8,10 +12,12 @@ export class App extends Component {
     render() {
         return <div className="dpaApp">
             <div className="nav">
-                <div>
-                    <Link className="home" to="/home">Home</Link>
-                    <Link className="info" to="/info">Info</Link>
-                </div>
+                <LinkContainer to="/home">
+                    <Button>Home</Button>
+                </LinkContainer>
+                <LinkContainer to="/info">
+                    <Button>Info</Button>
+                </LinkContainer>
             </div>
             <main>
                 {this.props.children}
