@@ -1,7 +1,7 @@
 {
     "author": "Bogdan Nechyporenko",
-    "description": "Dynamically pluggable architecture",
-    "name": "dynamically-pluggable-architecture",
+    "description": "Dynamically pluggable frontend architecture",
+    "name": "dynamically-pluggable-frontend-architecture",
     "version": "0.0.1",
     "repository": {
         "type": "git",

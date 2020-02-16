@@ -16,9 +16,7 @@ export default {
         vendor: R.keys(dependencies)
     },
     mode: common.mode,
-    module: {
-        rules: common.rulesConfig
-    },
+    module: {rules: common.rulesConfig},
     node: common.node,
     optimization: common.optimization,
     output: {
@@ -31,7 +29,7 @@ export default {
         new webpack.NoEmitOnErrorsPlugin(),
         new HtmlWebpackPlugin({
             template: './src/app/index.ejs',
-            title: 'Dynamically pluggable architecture'
+            title: 'Dynamically pluggable frontend architecture'
         })
     ]
 };
