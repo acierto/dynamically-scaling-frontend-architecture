@@ -64,6 +64,7 @@
         "webpack-stream": "5.2.1"
     },
     "dependencies": {
+        "axios": "^0.19.2",
         "bootstrap": "4.4.1",
         "connected-react-router": "6.6.1",
         "jquery": "3.4.1",

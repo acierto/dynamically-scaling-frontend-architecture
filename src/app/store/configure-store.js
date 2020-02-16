@@ -6,6 +6,7 @@ import {composeWithDevTools} from 'redux-devtools-extension/developmentOnly';
 import {createLogger} from 'redux-logger';
 import {allReducers} from '../reducers';
 import {rootReducer} from '../reducers/root-reducer';
+import {rootSaga} from '../sagas/root-saga';
 
 log.setDefaultLevel(log.levels.DEBUG);
 
@@ -23,3 +24,5 @@ export const configureStore = (history) => {
         composeWithDevTools(applyMiddleware(...[...middlewareList, routerMiddleware(history)]))
     );
 };
+
+export const runSaga = () => sagaMiddleware.run(rootSaga);

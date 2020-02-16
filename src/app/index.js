@@ -7,6 +7,7 @@ import {AppContainer} from 'react-hot-loader';
 import {Provider} from 'react-redux';
 import {Redirect, Route, Switch} from 'react-router';
 import {ConnectedRouter} from 'connected-react-router';
+import applicationActions from './actions/application-actions';
 import {InfoPage} from './pages/info-page/info-page';
 import {HomePage} from './pages/home-page/home-page';
 import {App} from './pages/app';
@@ -17,19 +18,21 @@ import './styles/dynamically-pluggable-architecture.less';
 
 const redirectHome = () => <Redirect to='/home'/>;
 
-const renderApp = (ComponentsApp) => {
+store.dispatch(applicationActions.bootstrap());
+
+const renderApp = (ApplicationLayout) => {
     render(
         <AppContainer>
             <Provider store={store}>
                 <ConnectedRouter history={history} onLocationChanged={R.F} store={store}>
                     <div>
                         <Route exact={true} path='/' render={redirectHome}/>
-                        <ComponentsApp>
+                        <ApplicationLayout>
                             <Switch>
                                 <Route component={InfoPage} exact={true} path='/info'/>
                                 <Route component={HomePage} path='/home'/>
                             </Switch>
-                        </ComponentsApp>
+                        </ApplicationLayout>
                     </div>
                 </ConnectedRouter>
             </Provider>
