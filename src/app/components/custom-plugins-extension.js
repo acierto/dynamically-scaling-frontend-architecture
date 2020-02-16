@@ -19,7 +19,13 @@ export default class CustomPluginsExtension extends PureComponent {
     render() {
         const {plugins} = this.props;
         return <div>
-            {R.map((plugin) => <Button key={plugin.name}>{plugin.name}</Button>, plugins)}
+            {R.map((plugin) =>
+                    <LinkContainer key={plugin.name} to={`/${plugin.name}`}>
+                        <Button>
+                            {plugin.name}
+                        </Button>
+                    </LinkContainer>
+                , plugins)}
         </div>;
     }
 }
