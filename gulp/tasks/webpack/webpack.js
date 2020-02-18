@@ -2,6 +2,7 @@ import gulp from 'gulp';
 import webpack from 'webpack';
 import webpackStream from 'webpack-stream';
 import plumber from 'gulp-plumber';
+import {pluginNames} from '../../utils/plugins';
 import paths from '../../utils/paths';
 import webpackAppConfig from './webpack.config.app';
 import {buildConfig} from './webpack.config.plugin.common';
@@ -14,7 +15,7 @@ gulp.task('webpack-app', () =>
         .pipe(gulp.dest(paths.distDir))
 );
 
-for(const pluginName of ['about', 'profile']) {
+for (const pluginName of pluginNames) {
     gulp.task(`webpack-${pluginName}`, () =>
         gulp
             .src(`${paths.pluginsSrcDir}/${pluginName}/**/*.js`)

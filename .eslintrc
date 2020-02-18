@@ -59,6 +59,7 @@
   },
   "globals": {
     "document": true,
+    "FormData": true,
     "process": true,
     "window": true
   },

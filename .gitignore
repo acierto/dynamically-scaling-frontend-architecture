@@ -38,5 +38,5 @@ jrebel.lic
 
 dist/*
 node_modules/*
-plugins/about/*
+plugins/admin/*
 plugins/profile/*

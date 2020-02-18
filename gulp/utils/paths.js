@@ -1,5 +1,7 @@
+// eslint-disable-next-line import/no-nodejs-modules
 import path from 'path';
 
+// eslint-disable-next-line no-undef
 const projectDir = path.resolve(__dirname, '..', '..');
 
 const srcDir = path.resolve(projectDir, 'src');

@@ -4,6 +4,7 @@ import {
 
 import applicationActions from '../actions/application-actions';
 import customPluginsActions from '../actions/custom-plugins-actions';
+import userActions from '../actions/user-actions';
 import {selectBootstrapped} from './selectors';
 
 export function* bootstrap() {
@@ -11,6 +12,8 @@ export function* bootstrap() {
     if (!bootstrapped) {
         yield put(customPluginsActions.load());
         yield take(customPluginsActions.SET);
+        yield put(userActions.load());
+        yield take(userActions.SET);
     }
 }
 

@@ -1,17 +1,35 @@
 import React from 'react';
-import {useDispatch} from 'react-redux';
-import {Button} from 'react-bootstrap';
-import toastrActions from '../../actions/toastr-actions';
+import R from 'ramda';
+import {usersType} from '../../types/users-type';
 
 import './users-page.less';
 
-export const UsersPage = () => {
-    const dispatch = useDispatch();
+export const UsersPage = ({users = []}) => {
+    const headerRow = () => <tr>
+        <th scope="col">#</th>
+        <th scope="col">User name</th>
+        <th scope="col">Address</th>
+    </tr>;
 
-    const handleOnClick = () => dispatch(toastrActions.show('Users Page',
-        'That page consists the information about this site.'));
+    const header = () => <thead>{headerRow()}</thead>;
 
-    return <div className="users-page">
-        <Button onClick={handleOnClick}>Get info</Button>
-    </div>;
+    const userRows = () => R.addIndex(R.map)(
+        (user, index) =>
+            <tr key={user._id}>
+                <th scope="row">{index + 1}</th>
+                <td>{user.userName}</td>
+                <td>{user.address}</td>
+            </tr>,
+        users);
+
+    return (
+        <div className="users-page">
+            <table className="table table-hover">
+                {header()}
+                <tbody>{userRows()}</tbody>
+            </table>
+        </div>
+    );
 };
+
+UsersPage.propTypes = {users: usersType};

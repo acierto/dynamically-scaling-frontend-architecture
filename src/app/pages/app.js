@@ -10,6 +10,7 @@ import CustomLinks from '../components/custom-links';
 import CustomRoutes from '../components/custom-routes';
 import '../imports/globals';
 import {pluginsType} from '../types/plugins-type';
+import {usersType} from '../types/users-type';
 import {UsersPage} from './users-page/users-page';
 import {HomePage} from './home-page/home-page';
 
@@ -17,18 +18,21 @@ import './app.less';
 
 const mapStateToProps = (state) => ({
     bootstrappedPlugins: state.bootstrap.bootstrappedPlugins,
-    plugins: state.customPlugins
+    plugins: state.customPlugins,
+    users: state.users
 });
 
 @connect(mapStateToProps)
 export class App extends Component {
     static propTypes = {
         bootstrappedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired,
-        plugins: pluginsType
+        plugins: pluginsType,
+        users: usersType
     };
 
     render() {
-        const {bootstrappedPlugins, plugins} = this.props;
+        const {bootstrappedPlugins, plugins, users} = this.props;
+
         return <div className="dpaApp">
             <div className="nav">
                 <LinkContainer to="/home">
@@ -41,7 +45,7 @@ export class App extends Component {
             </div>
             <main>
                 <Switch>
-                    <Route component={UsersPage} exact={true} path="/users"/>
+                    <Route component={() => <UsersPage users={users}/>} exact={true} path="/users"/>
                     <Route component={HomePage} exact={true} path="/home"/>
                     <CustomRoutes bootstrappedPlugins={bootstrappedPlugins} plugins={plugins}/>
                 </Switch>

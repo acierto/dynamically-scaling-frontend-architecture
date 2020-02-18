@@ -1,11 +1,11 @@
 {
   "plugins": [
     {
-      "name": "about",
-      "entry": "/plugins/about/index.js",
+      "name": "admin",
+      "entry": "/plugins/admin/index.js",
       "options": {
         "tab": {
-          "title": "About"
+          "title": "Admin"
         }
       }
     },
