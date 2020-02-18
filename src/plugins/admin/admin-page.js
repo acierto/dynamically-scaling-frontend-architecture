@@ -1,35 +1,75 @@
-import React, {useState} from 'react';
+import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import R from 'ramda';
-
+import {connect} from 'react-redux';
 import './admin-page.less';
 import {Button, Form} from 'react-bootstrap';
+import userActions from './user-actions';
 
-export const AdminPage = () => {
-    const {dispatch} = window.dpaStore;
+const mapStateToProps = (state) => ({user: state.adminUser});
 
-    const [address = '', setAddress] = useState();
-    const [userName = '', setUserName] = useState();
-
-    const registerUser = (event) => {
-        event.preventDefault();
+const mapDispatchToProps = (dispatch) => ({
+    registerUser: (user) => {
+        dispatch(userActions.remove());
+        dispatch({type: 'user/ADD', user});
         dispatch({
-            type: 'user/ADD',
+            message: `User ${user.userName} has been created.`,
+            title: 'Successful',
+            toastrType: 'success',
+            type: 'toastr/SHOW'
+        });
+    },
+    stageUser: (user) => dispatch(userActions.stage(user))
+});
+
+@connect(mapStateToProps, mapDispatchToProps)
+export default class AdminPage extends PureComponent {
+    static propTypes = {
+        registerUser: PropTypes.func,
+        stageUser: PropTypes.func,
+        user: PropTypes.shape({
+            address: PropTypes.string,
+            userName: PropTypes.string
+        })
+    };
+
+    static defaultProps = {user: {}};
+
+    onRegisterUser = (event) => {
+        event.preventDefault();
+        const {registerUser, user} = this.props;
+
+        registerUser(user);
+    };
+
+    onPropertyChange = R.curry((fieldName, event) => this.props.stageUser(
+        {
+            ...this.props.user,
+            [fieldName]: event.target.value
+        }
+    ));
+
+    hasEmptyFields = () => {
+        const {user: {address, userName}} = this.props;
+        return R.isEmpty(address) || R.isEmpty(userName);
+    };
+
+    getSubmitVariant = () => this.hasEmptyFields() ? 'secondary' : 'primary';
+
+    render() {
+        const {
             user: {
                 address,
                 userName
             }
-        });
-    };
+        } = this.props;
 
-    const toHandler = R.curry((fnName, event) => fnName(event.target.value));
-
-    return (
-        <div className="admin-page">
-            <Form onSubmit={registerUser}>
+        return (
+            <Form onSubmit={this.onRegisterUser}>
                 <Form.Group controlId="formUsername" role="form">
                     <Form.Label>User name</Form.Label>
                     <Form.Control
-                        onChange={toHandler(setUserName)}
+                        onChange={this.onPropertyChange('userName')}
                         placeholder="User name"
                         type="text"
                         value={userName}
@@ -39,17 +79,17 @@ export const AdminPage = () => {
                 <Form.Group controlId="formAddress" role="form">
                     <Form.Label>Address</Form.Label>
                     <Form.Control
-                        onChange={toHandler(setAddress)}
+                        onChange={this.onPropertyChange('address')}
                         placeholder="Address"
                         type="text"
                         value={address}
                     />
                 </Form.Group>
 
-                <Button type="submit" variant="primary">
+                <Button disabled={this.hasEmptyFields()} type="submit" variant={this.getSubmitVariant()}>
                     Register
                 </Button>
             </Form>
-        </div>
-    );
-};
+        );
+    }
+}

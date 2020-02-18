@@ -1,3 +1,7 @@
-import {AdminPage} from './admin-page';
+import {adminUserReducer} from './admin-user-reducer';
+import {EntryComponent} from './entry-component';
 
-export default {component: AdminPage};
+export default {
+    component: EntryComponent,
+    reducers: {adminUser: adminUserReducer}
+};
