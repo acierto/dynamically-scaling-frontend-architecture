@@ -1,17 +1,13 @@
 import React from 'react';
-import {useDispatch} from 'react-redux';
-import {Button} from 'react-bootstrap';
-import toastrActions from '../../actions/toastr-actions';
+import {Jumbotron} from 'react-bootstrap';
 
 import './home-page.less';
 
-export const HomePage = () => {
-    const dispatch = useDispatch();
-
-    const handleOnClick = () => dispatch(toastrActions.show('Home Page',
-        'That is the main application page.'));
-
-    return <div className="home-page">
-        <Button onClick={handleOnClick}>Get info</Button>
+export const HomePage = () =>
+    <div className="home-page">
+        <Jumbotron>
+            <h1>UMS</h1>
+            <p>UMS - User management system.</p>
+            <p>With the help of this system you can manager your users.</p>
+        </Jumbotron>
     </div>;
-};

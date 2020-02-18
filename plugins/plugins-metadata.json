@@ -5,8 +5,7 @@
       "entry": "/plugins/about/index.js",
       "options": {
         "tab": {
-          "title": "About",
-          "variant": "success"
+          "title": "About"
         }
       }
     },
@@ -15,8 +14,7 @@
       "entry": "/plugins/profile/index.js",
       "options": {
         "tab": {
-          "title": "Profile",
-          "variant": "dark"
+          "title": "Profile"
         }
       }
     }

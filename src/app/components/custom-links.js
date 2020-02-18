@@ -13,7 +13,7 @@ export default class CustomLinks extends PureComponent {
             {R.map(
                 (plugin) =>
                     <LinkContainer key={plugin.name} to={`/${plugin.name}`}>
-                        <Button variant={R.pathOr('primary', ['options', 'tab', 'variant'], plugin)}>
+                        <Button variant="dark">
                             {plugin.options.tab.title}
                         </Button>
                     </LinkContainer>

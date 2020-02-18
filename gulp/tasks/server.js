@@ -10,8 +10,8 @@ gulp.task('server:start', (cb) => {
     });
     app.use(express.static(`${paths.projectDir}/dist`));
     app.use('/plugins', express.static(`${paths.projectDir}/plugins`));
-    app.listen(3000, () => {
-        console.log('DPFA is started on port 3000!');
+    app.listen(2020, () => {
+        console.log('DPFA is started on port 2020!');
         cb();
     });
 });

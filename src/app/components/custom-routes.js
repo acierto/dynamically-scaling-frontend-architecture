@@ -23,6 +23,7 @@ export default class CustomRoutes extends PureComponent {
     createRoute = (plugin) =>
         <Route
             component={this.component(plugin)}
+            exact={true}
             key={`${plugin.name}-route`}
             path={`/${plugin.name}`}
         />;

@@ -3,15 +3,15 @@ import {useDispatch} from 'react-redux';
 import {Button} from 'react-bootstrap';
 import toastrActions from '../../actions/toastr-actions';
 
-import './info-page.less';
+import './users-page.less';
 
-export const InfoPage = () => {
+export const UsersPage = () => {
     const dispatch = useDispatch();
 
-    const handleOnClick = () => dispatch(toastrActions.show('Info Page',
+    const handleOnClick = () => dispatch(toastrActions.show('Users Page',
         'That page consists the information about this site.'));
 
-    return <div className="info-page">
+    return <div className="users-page">
         <Button onClick={handleOnClick}>Get info</Button>
     </div>;
 };

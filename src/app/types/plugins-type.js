@@ -6,7 +6,7 @@ export const pluginsType = PropTypes.arrayOf(PropTypes.shape({
     options: PropTypes.shape({
         tab: PropTypes.shape({
             title: PropTypes.string.isRequired,
-            variant: PropTypes.string
+            weight: PropTypes.number
         })
     })
 }));

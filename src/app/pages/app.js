@@ -10,7 +10,7 @@ import CustomLinks from '../components/custom-links';
 import CustomRoutes from '../components/custom-routes';
 import '../imports/globals';
 import {pluginsType} from '../types/plugins-type';
-import {InfoPage} from './info-page/info-page';
+import {UsersPage} from './users-page/users-page';
 import {HomePage} from './home-page/home-page';
 
 import './app.less';
@@ -32,17 +32,17 @@ export class App extends Component {
         return <div className="dpaApp">
             <div className="nav">
                 <LinkContainer to="/home">
-                    <Button>Home</Button>
+                    <Button variant="dark">Home</Button>
                 </LinkContainer>
-                <LinkContainer to="/info">
-                    <Button variant="info">Info</Button>
+                <LinkContainer to="/users">
+                    <Button variant="dark">Users</Button>
                 </LinkContainer>
                 <CustomLinks plugins={plugins}/>
             </div>
             <main>
                 <Switch>
-                    <Route component={InfoPage} exact={true} path="/info"/>
-                    <Route component={HomePage} path="/home"/>
+                    <Route component={UsersPage} exact={true} path="/users"/>
+                    <Route component={HomePage} exact={true} path="/home"/>
                     <CustomRoutes bootstrappedPlugins={bootstrappedPlugins} plugins={plugins}/>
                 </Switch>
             </main>
