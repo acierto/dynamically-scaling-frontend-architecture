@@ -1,3 +1,4 @@
+import R from 'ramda';
 import React, {Component} from 'react';
 import {Route, Switch} from 'react-router';
 import ReduxToastr from 'react-redux-toastr';
@@ -9,6 +10,7 @@ import PropTypes from 'prop-types';
 import CustomLinks from '../components/custom-links';
 import CustomRoutes from '../components/custom-routes';
 import '../imports/globals';
+import {permissionsType} from '../types/permissions-type';
 import {pluginsType} from '../types/plugins-type';
 import {usersType} from '../types/users-type';
 import {UsersPage} from './users-page/users-page';
@@ -18,6 +20,7 @@ import './app.less';
 
 const mapStateToProps = (state) => ({
     bootstrappedPlugins: state.bootstrap.bootstrappedPlugins,
+    permissions: state.permissions,
     plugins: state.customPlugins,
     users: state.users
 });
@@ -26,9 +29,13 @@ const mapStateToProps = (state) => ({
 export class App extends Component {
     static propTypes = {
         bootstrappedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired,
+        permissions: permissionsType,
         plugins: pluginsType,
         users: usersType
     };
+
+    allowToRemoveUsers = () =>
+        R.find(R.propEq('name', 'allow-remove-users'), this.props.permissions).enabled;
 
     render() {
         const {bootstrappedPlugins, plugins, users} = this.props;
@@ -45,7 +52,16 @@ export class App extends Component {
             </div>
             <main>
                 <Switch>
-                    <Route component={() => <UsersPage users={users}/>} exact={true} path="/users"/>
+                    <Route
+                        component={() =>
+                            <UsersPage
+                                allowToRemoveUsers={this.allowToRemoveUsers()}
+                                users={users}
+                            />
+                        }
+                        exact={true}
+                        path="/users"
+                    />
                     <Route component={HomePage} exact={true} path="/home"/>
                     <CustomRoutes bootstrappedPlugins={bootstrappedPlugins} plugins={plugins}/>
                 </Switch>

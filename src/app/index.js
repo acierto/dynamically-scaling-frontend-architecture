@@ -1,4 +1,5 @@
 import './styles/reset.less';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 import R from 'ramda';
 import React from 'react';

@@ -1,2 +1,8 @@
 {"address":"New York","userName":"John Doe","_id":"aTEOHpCWupAmvUO1"}
 {"address":"Netherlands","userName":"Bogdan Nechyporenko","_id":"fKqnDtDkvg1P0P1H"}
+{"address":"asfd","userName":"asdf","_id":"tqkONMfTogrCLNW6"}
+{"$$deleted":true,"_id":"tqkONMfTogrCLNW6"}
+{"address":"asdfasdf","userName":"sdf","_id":"3w3iKnJ5UwIW628l"}
+{"$$deleted":true,"_id":"fKqnDtDkvg1P0P1H"}
+{"$$deleted":true,"_id":"3w3iKnJ5UwIW628l"}
+{"address":"Netherlands","userName":"Bogdan Nechyporenko","_id":"87dRCgxNkP4zuGWy"}

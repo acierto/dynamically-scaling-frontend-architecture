@@ -29,9 +29,8 @@ const registerDatabaseApi = () => {
             db.find(query, jsonResponse(res));
         }
     });
-    app.get('/api/user/remove', (req, res) => {
-        const {id} = req.body;
-        db.remove({_id: id}, {multi: true}, jsonResponse(res));
+    app.delete('/api/user/remove', (req, res) => {
+        db.remove({_id: req.query.id}, {multi: true}, jsonResponse(res));
     });
 };
 
