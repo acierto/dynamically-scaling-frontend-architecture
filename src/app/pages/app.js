@@ -37,8 +37,13 @@ export class App extends Component {
     allowToRemoveUsers = () =>
         R.find(R.propEq('name', 'allow-remove-users'), this.props.permissions).enabled;
 
+    allowToViewAdminPage = () =>
+        R.find(R.propEq('name', 'allow-view-admin-page'), this.props.permissions).enabled;
+
     render() {
         const {bootstrappedPlugins, plugins, users} = this.props;
+
+        const restrictedPluginNames = this.allowToViewAdminPage() ? [] : ['admin'];
 
         return <div className="dpaApp">
             <div className="nav">
@@ -48,7 +53,7 @@ export class App extends Component {
                 <LinkContainer to="/users">
                     <Button variant="dark">Users</Button>
                 </LinkContainer>
-                <CustomLinks plugins={plugins}/>
+                <CustomLinks plugins={plugins} restrictedPluginNames={restrictedPluginNames}/>
             </div>
             <main>
                 <Switch>
@@ -63,7 +68,11 @@ export class App extends Component {
                         path="/users"
                     />
                     <Route component={HomePage} exact={true} path="/home"/>
-                    <CustomRoutes bootstrappedPlugins={bootstrappedPlugins} plugins={plugins}/>
+                    <CustomRoutes
+                        bootstrappedPlugins={bootstrappedPlugins}
+                        plugins={plugins}
+                        restrictedPluginNames={restrictedPluginNames}
+                    />
                 </Switch>
             </main>
             <ReduxToastr

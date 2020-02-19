@@ -9,8 +9,11 @@ import {pluginsType} from '../types/plugins-type';
 export default class CustomRoutes extends PureComponent {
     static propTypes = {
         bootstrappedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired,
-        plugins: pluginsType
+        plugins: pluginsType,
+        restrictedPluginNames: PropTypes.arrayOf(PropTypes.string)
     };
+
+    static defaultProps = {restrictedPluginNames: []};
 
     component = (plugin) => () => <CatchError>
         <LoadPlugin
@@ -21,12 +24,14 @@ export default class CustomRoutes extends PureComponent {
     </CatchError>;
 
     createRoute = (plugin) =>
-        <Route
-            component={this.component(plugin)}
-            exact={true}
-            key={`${plugin.name}-route`}
-            path={`/${plugin.name}`}
-        />;
+        !R.contains(plugin.name, this.props.restrictedPluginNames) ?
+            <Route
+                component={this.component(plugin)}
+                exact={true}
+                key={`${plugin.name}-route`}
+                path={`/${plugin.name}`}
+            /> :
+            undefined;
 
     render() {
         const {plugins} = this.props;
