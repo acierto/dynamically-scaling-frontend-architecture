@@ -10,11 +10,11 @@
       }
     },
     {
-      "name": "profile",
-      "entry": "/plugins/profile/index.js",
+      "name": "settings",
+      "entry": "/plugins/settings/index.js",
       "options": {
         "tab": {
-          "title": "Profile"
+          "title": "Settings"
         }
       }
     }
