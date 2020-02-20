@@ -1,10 +1,3 @@
-{"address":"Netherlands","userName":"Bogdan Nechyporenko","_id":"87dRCgxNkP4zuGWy"}
-{"address":"New York","userName":"John Doe","_id":"aTEOHpCWupAmvUO1"}
-{"address":"Kiev","userName":"Roman Nechyporenko","_id":"Iqi0Nw6nNDr1s5Ed"}
-{"$$deleted":true,"_id":"aTEOHpCWupAmvUO1"}
-{"$$deleted":true,"_id":"Iqi0Nw6nNDr1s5Ed"}
-{"address":"New York","userName":"Roman Nechyporenko","_id":"3G8lDT4UNDYZ5Yd0"}
-{"$$deleted":true,"_id":"3G8lDT4UNDYZ5Yd0"}
-{"$$deleted":true,"_id":"87dRCgxNkP4zuGWy"}
 {"address":"New York","userName":"John Doe","_id":"BsRYCtxHrij3n2eg"}
 {"address":"Denver","userName":"Sam Smith","_id":"TfQK7fWt7eBcLuGr"}
+{"address":"Paris","userName":"Dilbert","_id":"JhMidghNrFu4VuNg"}

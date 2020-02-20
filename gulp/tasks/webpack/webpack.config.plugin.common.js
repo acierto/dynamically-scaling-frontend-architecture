@@ -13,9 +13,7 @@ export const buildConfig = (pluginName) => ({
     },
     externals,
     mode: common.mode,
-    module: {
-        rules: common.rulesConfig
-    },
+    module: {rules: common.rulesConfig},
     node: common.node,
     output: {
         filename: 'index.js',

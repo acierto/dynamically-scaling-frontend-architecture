@@ -40,10 +40,10 @@ const LoadPlugin = (params) => {
 
         if (R.not(R.includes(loadedPluginName, bootstrappedPlugins))) {
             if (saga) {
-                context.saga = window.dpaSaga.run(saga);
+                context.saga = window.dsfaSaga.run(saga);
             }
             if (reducers) {
-                window.dpaReducerRegistry.register(reducers);
+                window.dsfaReducerRegistry.register(reducers);
             }
             dispatch(applicationActions.pluginBootstrapped(loadedPluginName));
         }

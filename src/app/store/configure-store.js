@@ -13,10 +13,10 @@ import {ReducerRegistry} from './reducer-registry';
 log.setDefaultLevel(log.levels.DEBUG);
 
 const sagaMiddleware = createSagaMiddleware();
-window.dpaSaga = sagaMiddleware;
+window.dsfaSaga = sagaMiddleware;
 
 export const reducerRegistry = new ReducerRegistry(allReducers);
-window.dpaReducerRegistry = reducerRegistry;
+window.dsfaReducerRegistry = reducerRegistry;
 
 let middlewareList = [sagaMiddleware];
 if (process.env.NODE_ENV === 'development') {
@@ -37,7 +37,7 @@ export const configureStore = (history) => {
     reducerRegistry.setChangeListener((reducers) => {
         store.replaceReducer(configureReducers(reducers));
     });
-    window.dpaStore = store;
+    window.dsfaStore = store;
     return store;
 };
 

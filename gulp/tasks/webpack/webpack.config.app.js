@@ -21,7 +21,7 @@ export default {
     optimization: common.optimization,
     output: {
         filename: '[name]-[hash].js',
-        path: paths.distDir,
+        path: '/dist',
         publicPath: '/'
     },
     plugins: [
@@ -29,7 +29,7 @@ export default {
         new webpack.NoEmitOnErrorsPlugin(),
         new HtmlWebpackPlugin({
             template: './src/app/index.ejs',
-            title: 'Dynamically pluggable frontend architecture'
+            title: 'Dynamically scaling frontend architecture'
         })
     ]
 };

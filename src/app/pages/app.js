@@ -45,7 +45,7 @@ export class App extends Component {
 
         const restrictedPluginNames = this.allowToViewAdminPage() ? [] : ['admin'];
 
-        return <div className="dpaApp">
+        return <div className="dsfaApp">
             <div className="nav">
                 <LinkContainer to="/home">
                     <Button variant="dark">Home</Button>
