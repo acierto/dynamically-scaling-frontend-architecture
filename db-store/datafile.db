@@ -1,8 +1,10 @@
-{"address":"New York","userName":"John Doe","_id":"aTEOHpCWupAmvUO1"}
-{"address":"Netherlands","userName":"Bogdan Nechyporenko","_id":"fKqnDtDkvg1P0P1H"}
-{"address":"asfd","userName":"asdf","_id":"tqkONMfTogrCLNW6"}
-{"$$deleted":true,"_id":"tqkONMfTogrCLNW6"}
-{"address":"asdfasdf","userName":"sdf","_id":"3w3iKnJ5UwIW628l"}
-{"$$deleted":true,"_id":"fKqnDtDkvg1P0P1H"}
-{"$$deleted":true,"_id":"3w3iKnJ5UwIW628l"}
 {"address":"Netherlands","userName":"Bogdan Nechyporenko","_id":"87dRCgxNkP4zuGWy"}
+{"address":"New York","userName":"John Doe","_id":"aTEOHpCWupAmvUO1"}
+{"address":"Kiev","userName":"Roman Nechyporenko","_id":"Iqi0Nw6nNDr1s5Ed"}
+{"$$deleted":true,"_id":"aTEOHpCWupAmvUO1"}
+{"$$deleted":true,"_id":"Iqi0Nw6nNDr1s5Ed"}
+{"address":"New York","userName":"Roman Nechyporenko","_id":"3G8lDT4UNDYZ5Yd0"}
+{"$$deleted":true,"_id":"3G8lDT4UNDYZ5Yd0"}
+{"$$deleted":true,"_id":"87dRCgxNkP4zuGWy"}
+{"address":"New York","userName":"John Doe","_id":"BsRYCtxHrij3n2eg"}
+{"address":"Denver","userName":"Sam Smith","_id":"TfQK7fWt7eBcLuGr"}
