@@ -46,7 +46,7 @@ gulp.task('server:start', (cb) => {
     });
     registerDatabaseApi();
     app.use(express.static(`${paths.projectDir}/dist`));
-    app.use('/plugins', express.static(`${paths.projectDir}/plugins`));
+    app.use('/modules', express.static(`${paths.projectDir}/modules`));
     app.listen(serverPort, () => {
         log.info(`DSFA is started on port ${serverPort}!`);
         cb();
@@ -63,8 +63,6 @@ gulp.task('dev-server:start', () => {
         port: devServerPort,
         publicPath: ''
     };
-    // console.log('webpackConfigApp', webpackConfigApp);
-    // compiler.hooks.done.tap('done', cb);
     const server = new WebpackDevServer(compiler, {
         disableHostCheck: true,
         hot: true,

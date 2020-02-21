@@ -1,7 +1,6 @@
 import R from 'ramda';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import paths from '../../utils/paths';
 import {dependencies} from '../../../package.json';
 import common from './webpack.config.common';
 

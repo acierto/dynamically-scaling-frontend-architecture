@@ -3,41 +3,41 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {Route} from 'react-router';
 import CatchError from '../components/catch-error';
-import LoadPlugin from '../components/load-plugin';
-import {pluginsType} from '../types/plugins-type';
+import LoadModule from '../components/load-module';
+import {modulesType} from '../types/modules-type';
 
 export default class CustomRoutes extends PureComponent {
     static propTypes = {
-        bootstrappedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired,
-        plugins: pluginsType,
-        restrictedPluginNames: PropTypes.arrayOf(PropTypes.string)
+        bootstrappedModules: PropTypes.arrayOf(PropTypes.string).isRequired,
+        modules: modulesType,
+        restrictedModuleNames: PropTypes.arrayOf(PropTypes.string)
     };
 
-    static defaultProps = {restrictedPluginNames: []};
+    static defaultProps = {restrictedModuleNames: []};
 
-    component = (plugin) => () => <CatchError>
-        <LoadPlugin
-            bootstrappedPlugins={this.props.bootstrappedPlugins}
-            pluginName={plugin.name}
-            scriptUrl={plugin.entry}
+    component = (module) => () => <CatchError>
+        <LoadModule
+            bootstrappedModules={this.props.bootstrappedModules}
+            moduleName={module.name}
+            scriptUrl={module.entry}
         />
     </CatchError>;
 
-    createRoute = (plugin) =>
-        !R.contains(plugin.name, this.props.restrictedPluginNames) ?
+    createRoute = (module) =>
+        !R.contains(module.name, this.props.restrictedModuleNames) ?
             <Route
-                component={this.component(plugin)}
+                component={this.component(module)}
                 exact={true}
-                key={`${plugin.name}-route`}
-                path={`/${plugin.name}`}
+                key={`${module.name}-route`}
+                path={`/${module.name}`}
             /> :
             undefined;
 
     render() {
-        const {plugins} = this.props;
+        const {modules} = this.props;
 
         return <>
-            {R.map(this.createRoute, plugins)}
+            {R.map(this.createRoute, modules)}
         </>;
     }
 }

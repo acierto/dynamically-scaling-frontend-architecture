@@ -1,16 +1,16 @@
 const BOOTSTRAP = 'application/BOOTSTRAP';
-const BOOTSTRAP_PLUGINS = 'application/plugins/BOOTSTRAP';
+const BOOTSTRAP_MODULES = 'application/modules/BOOTSTRAP';
 const BOOTSTRAPPED = 'application/BOOTSTRAPPED';
-const PLUGIN_BOOTSTRAPPED = 'application/plugin/BOOTSTRAPPED';
+const MODULE_BOOTSTRAPPED = 'application/module/BOOTSTRAPPED';
 
 export default {
     BOOTSTRAP,
     bootstrap: () => ({type: BOOTSTRAP}),
-    BOOTSTRAP_PLUGINS,
+    BOOTSTRAP_MODULES,
+    bootstrapModules: () => ({type: BOOTSTRAP_MODULES}),
     BOOTSTRAPPED,
     bootstrapped: () => ({type: BOOTSTRAPPED}),
-    bootstrapPlugins: () => ({type: BOOTSTRAP_PLUGINS}),
-    PLUGIN_BOOTSTRAPPED,
-    pluginBootstrapped: (plugin) => ({plugin, type: PLUGIN_BOOTSTRAPPED})
+    MODULE_BOOTSTRAPPED,
+    moduleBootstrapped: (module) => ({module, type: MODULE_BOOTSTRAPPED})
 };
 

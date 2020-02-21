@@ -4,24 +4,24 @@ import PropTypes from 'prop-types';
 import R from 'ramda';
 import applicationActions from '../actions/application-actions';
 
-const LoadPlugin = (params) => {
-    const {bootstrappedPlugins, pluginName, scriptUrl} = params;
+const LoadModule = (params) => {
+    const {bootstrappedModules, moduleName, scriptUrl} = params;
     const dispatch = useDispatch();
     const context = {};
 
-    const [loadedPluginName, setLoadedPluginName] = useState();
+    const [loadedModuleName, setLoadedModuleName] = useState();
 
     useEffect(() => {
-        if (R.not(R.includes(pluginName, bootstrappedPlugins))) {
+        if (R.not(R.includes(moduleName, bootstrappedModules))) {
             const script = document.createElement('script');
             script.src = scriptUrl;
             script.async = true;
             script.onload = () => {
-                setLoadedPluginName(pluginName);
+                setLoadedModuleName(moduleName);
             };
             document.body.appendChild(script);
         } else {
-            setLoadedPluginName(pluginName);
+            setLoadedModuleName(moduleName);
         }
 
         return () => {
@@ -31,21 +31,21 @@ const LoadPlugin = (params) => {
         };
     }, []);
 
-    if (R.complement(R.isNil)(loadedPluginName)) {
+    if (R.complement(R.isNil)(loadedModuleName)) {
         const {
             component: Component,
             reducers,
             saga
-        } = window[loadedPluginName].default;
+        } = window[loadedModuleName].default;
 
-        if (R.not(R.includes(loadedPluginName, bootstrappedPlugins))) {
+        if (R.not(R.includes(loadedModuleName, bootstrappedModules))) {
             if (saga) {
                 context.saga = window.dsfaSaga.run(saga);
             }
             if (reducers) {
                 window.dsfaReducerRegistry.register(reducers);
             }
-            dispatch(applicationActions.pluginBootstrapped(loadedPluginName));
+            dispatch(applicationActions.moduleBootstrapped(loadedModuleName));
         }
         return <Component/>;
     }
@@ -53,10 +53,10 @@ const LoadPlugin = (params) => {
     return <span/>;
 };
 
-LoadPlugin.propTypes = {
-    bootstrappedPlugins: PropTypes.array.isRequired,
-    pluginName: PropTypes.string.isRequired,
+LoadModule.propTypes = {
+    bootstrappedModules: PropTypes.array.isRequired,
+    moduleName: PropTypes.string.isRequired,
     scriptUrl: PropTypes.string.isRequired
 };
 
-export default React.memo(LoadPlugin);
+export default React.memo(LoadModule);

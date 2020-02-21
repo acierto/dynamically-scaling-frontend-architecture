@@ -6,13 +6,13 @@ const bootstrapped = actionReducer((state) => ({
     bootstrapped: true
 }));
 
-const pluginBootstrapped = actionReducer((state, action) => ({
+const moduleBootstrapped = actionReducer((state, action) => ({
     ...state,
-    bootstrappedPlugins: [...state.bootstrappedPlugins, action.plugin]
+    bootstrappedModules: [...state.bootstrappedModules, action.module]
 }));
 
 export const bootstrapReducer = composeReducer(
     bootstrapped(systemActions.BOOTSTRAPPED),
-    pluginBootstrapped(systemActions.PLUGIN_BOOTSTRAPPED),
+    moduleBootstrapped(systemActions.MODULE_BOOTSTRAPPED),
     stateIdentity
-)({bootstrapped: false, bootstrappedPlugins: []});
+)({bootstrapped: false, bootstrappedModules: []});

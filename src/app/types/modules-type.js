@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export const pluginsType = PropTypes.arrayOf(PropTypes.shape({
+export const modulesType = PropTypes.arrayOf(PropTypes.shape({
     entry: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     options: PropTypes.shape({

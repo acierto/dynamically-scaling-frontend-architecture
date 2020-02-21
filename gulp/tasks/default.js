@@ -1,8 +1,8 @@
 import gulp from 'gulp';
 import R from 'ramda';
-import {pluginNames} from '../utils/plugins';
+import {moduleNames} from '../utils/modules';
 
-gulp.task('build-all', gulp.parallel(...['webpack-app', ...R.map((name) => `webpack-${name}`, pluginNames)]));
+gulp.task('build-all', gulp.parallel(...['webpack-app', ...R.map((name) => `webpack-${name}`, moduleNames)]));
 
 gulp.task('server', gulp.parallel('server:start', 'watch'));
 

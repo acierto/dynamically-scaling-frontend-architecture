@@ -3,26 +3,26 @@ import R from 'ramda';
 import {Button} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
 import PropTypes from 'prop-types';
-import {pluginsType} from '../types/plugins-type';
+import {modulesType} from '../types/modules-type';
 
 export default class CustomLinks extends PureComponent {
     static propTypes = {
-        plugins: pluginsType,
-        restrictedPluginNames: PropTypes.arrayOf(PropTypes.string)
+        modules: modulesType,
+        restrictedModuleNames: PropTypes.arrayOf(PropTypes.string)
     };
 
     render() {
-        const {plugins} = this.props;
+        const {modules} = this.props;
         return <div>
             {R.map(
-                (plugin) =>
-                    !R.contains(plugin.name, this.props.restrictedPluginNames) ?
-                        <LinkContainer key={plugin.name} to={`/${plugin.name}`}>
+                (module) =>
+                    !R.contains(module.name, this.props.restrictedModuleNames) ?
+                        <LinkContainer key={module.name} to={`/${module.name}`}>
                             <Button variant="dark">
-                                {plugin.options.tab.title}
+                                {module.options.tab.title}
                             </Button>
                         </LinkContainer> : undefined
-                , plugins)}
+                , modules)}
         </div>;
     }
 }

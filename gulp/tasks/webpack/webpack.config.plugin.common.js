@@ -3,12 +3,12 @@ import paths from '../../utils/paths';
 import common from './webpack.config.common';
 import {externals} from './webpack.externals';
 
-export const buildConfig = (pluginName) => ({
+export const buildConfig = (moduleName) => ({
     devtool: 'inline-source-map',
     entry: {
         main: [
             'eventsource-polyfill',
-            `./src/plugins/${pluginName}/index`
+            `./src/modules/${moduleName}/index`
         ]
     },
     externals,
@@ -18,9 +18,9 @@ export const buildConfig = (pluginName) => ({
     output: {
         filename: 'index.js',
         globalObject: 'window',
-        library: pluginName,
+        library: moduleName,
         libraryTarget: 'umd',
-        path: `${paths.pluginsDistDir}/${pluginName}`,
+        path: `${paths.modulesDistDir}/${moduleName}`,
         publicPath: '/'
     },
     plugins: [

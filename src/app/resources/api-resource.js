@@ -1,6 +1,6 @@
 import {httpRequest} from '../services/http-service';
 
-export const getPluginsMetadata = () => httpRequest('GET', 'plugins/plugins-metadata.json');
+export const getModulesMetadata = () => httpRequest('GET', 'modules/modules-metadata.json');
 
 export const addUser = (user) => httpRequest('POST', 'api/user/add', {data: user});
 

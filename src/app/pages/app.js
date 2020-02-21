@@ -11,7 +11,7 @@ import CustomLinks from '../components/custom-links';
 import CustomRoutes from '../components/custom-routes';
 import '../imports/globals';
 import {permissionsType} from '../types/permissions-type';
-import {pluginsType} from '../types/plugins-type';
+import {modulesType} from '../types/modules-type';
 import {usersType} from '../types/users-type';
 import {UsersPage} from './users-page/users-page';
 import {HomePage} from './home-page/home-page';
@@ -19,18 +19,18 @@ import {HomePage} from './home-page/home-page';
 import './app.less';
 
 const mapStateToProps = (state) => ({
-    bootstrappedPlugins: state.bootstrap.bootstrappedPlugins,
+    bootstrappedModules: state.bootstrap.bootstrappedModules,
+    modules: state.customModules,
     permissions: state.permissions,
-    plugins: state.customPlugins,
     users: state.users
 });
 
 @connect(mapStateToProps)
 export class App extends Component {
     static propTypes = {
-        bootstrappedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired,
+        bootstrappedModules: PropTypes.arrayOf(PropTypes.string).isRequired,
+        modules: modulesType,
         permissions: permissionsType,
-        plugins: pluginsType,
         users: usersType
     };
 
@@ -41,9 +41,9 @@ export class App extends Component {
         R.find(R.propEq('name', 'allow-view-admin-page'), this.props.permissions).enabled;
 
     render() {
-        const {bootstrappedPlugins, plugins, users} = this.props;
+        const {bootstrappedModules, modules, users} = this.props;
 
-        const restrictedPluginNames = this.allowToViewAdminPage() ? [] : ['admin'];
+        const restrictedModuleNames = this.allowToViewAdminPage() ? [] : ['admin'];
 
         return <div className="dsfaApp">
             <div className="nav">
@@ -53,7 +53,7 @@ export class App extends Component {
                 <LinkContainer to="/users">
                     <Button variant="dark">Users</Button>
                 </LinkContainer>
-                <CustomLinks plugins={plugins} restrictedPluginNames={restrictedPluginNames}/>
+                <CustomLinks modules={modules} restrictedModuleNames={restrictedModuleNames}/>
             </div>
             <main>
                 <Switch>
@@ -69,9 +69,9 @@ export class App extends Component {
                     />
                     <Route component={HomePage} exact={true} path="/home"/>
                     <CustomRoutes
-                        bootstrappedPlugins={bootstrappedPlugins}
-                        plugins={plugins}
-                        restrictedPluginNames={restrictedPluginNames}
+                        bootstrappedModules={bootstrappedModules}
+                        modules={modules}
+                        restrictedModuleNames={restrictedModuleNames}
                     />
                 </Switch>
             </main>

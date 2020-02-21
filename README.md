@@ -11,4 +11,3 @@ Actually you can view application from 2 ports: 2020, and 2021. The latter one i
 into action also a hot reloading, what makes the process way easier for developer without a need of unnecessary 
 manipulations to see the result of code changes. 
 
-

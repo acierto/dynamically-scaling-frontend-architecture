@@ -1,8 +1,8 @@
 {
-  "plugins": [
+  "modules": [
     {
       "name": "admin",
-      "entry": "/plugins/admin/index.js",
+      "entry": "/modules/admin/index.js",
       "options": {
         "tab": {
           "title": "Admin"
@@ -11,7 +11,7 @@
     },
     {
       "name": "settings",
-      "entry": "/plugins/settings/index.js",
+      "entry": "/modules/settings/index.js",
       "options": {
         "tab": {
           "title": "Settings"
