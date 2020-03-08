@@ -58,11 +58,22 @@
     // enable all ECMAScript 6 features except for modules
   },
   "globals": {
+    "browser": true,
+    "describe": true,
     "document": true,
+    "global": true,
+    "it": true,
+    "require": true,
     "FormData": true,
     "process": true,
     "window": true
   },
+  "overrides": [
+    {
+      "files": ["src/**/*.js"],
+      "excludedFiles": "test/**/*.js"
+    }
+  ],
   "plugins": [
     "babel",
     "react",
@@ -332,7 +343,7 @@
     // disallow use of new operator with the require function (off by default) (on by default in the node environment)
     "no-path-concat": 2,
     // disallow string concatenation with __dirname and __filename (off by default) (on by default in the node environment)
-    "no-process-exit": 2,
+    "no-process-exit": 0,
     // disallow process.exit() (on by default in the node environment)
     "no-restricted-modules": 0,
     // restrict usage of specified node modules (off by default)

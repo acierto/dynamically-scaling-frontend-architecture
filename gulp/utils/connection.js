@@ -1,2 +1,6 @@
-export const devServerPort = 2021;
-export const serverPort = 2020;
+const yargs = require('yargs');
+
+module.exports = {
+    proxyPort: yargs.argv.proxyPort || 2021,
+    serverPort: 2020
+};

@@ -16,6 +16,8 @@ export default {
     distDir,
     modulesDistDir,
     modulesSrcDir,
+    nodeModulesDir: `${projectDir}/node_modules`,
     projectDir,
-    srcDir
+    srcDir,
+    testDir: `${projectDir}/test`
 };

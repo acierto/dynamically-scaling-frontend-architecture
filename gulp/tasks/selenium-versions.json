@@ -1,0 +1,6 @@
+{
+    "chromedriver": "79.0.3945.79",
+    "geckodriver": "0.26.0",
+    "iedriver": "3.9.2",
+    "selenium": "3.141.59"
+}

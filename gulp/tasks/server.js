@@ -4,7 +4,7 @@ import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import log from 'loglevel';
 import paths from '../utils/paths';
-import {devServerPort, serverPort} from '../utils/connection';
+import {proxyPort, serverPort} from '../utils/connection';
 import proxy from './proxy';
 import webpackConfigApp from './webpack/webpack.config.app';
 import db from './db';
@@ -55,12 +55,12 @@ gulp.task('server:start', (cb) => {
 
 gulp.task('dev-server:start', () => {
     webpackConfigApp
-        .entry.main.unshift(`webpack-dev-server/client?http://localhost:${devServerPort}/`, 'webpack/hot/dev-server');
+        .entry.main.unshift(`webpack-dev-server/client?http://localhost:${proxyPort}/`, 'webpack/hot/dev-server');
     const compiler = webpack(webpackConfigApp);
     webpackConfigApp.devServer = {
         contentBase: '/dist',
         hot: true,
-        port: devServerPort,
+        port: proxyPort,
         publicPath: ''
     };
     const server = new WebpackDevServer(compiler, {
@@ -73,5 +73,5 @@ gulp.task('dev-server:start', () => {
         quiet: false,
         stats: {colors: true}
     });
-    server.listen(devServerPort);
+    server.listen(proxyPort);
 });
