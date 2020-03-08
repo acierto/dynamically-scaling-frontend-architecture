@@ -36,7 +36,8 @@ jrebel.lic
 .*.sw?
 .idea
 
+build/*
 dist/*
 node_modules/*
-plugins/*
-!plugins/plugins-metadata.json
+modules/*
+!modules/plugins-metadata.json
